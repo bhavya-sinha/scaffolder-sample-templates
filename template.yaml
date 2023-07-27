@@ -106,7 +106,7 @@ spec:
       input:
         url: 'https://stress.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/home/orgs/default/projects/IDPTest/pipelines/Django_Service_Bhavya/pipeline-studio/?storeType=INLINE'
         secretIdentifier: ${{ steps.createsecret.output.SecretIdentifier }}
-      apikey: ${{ parameters.token }}
+        apikey: ${{ parameters.token }}
   output:
     links:
       - title: Pipeline Details
