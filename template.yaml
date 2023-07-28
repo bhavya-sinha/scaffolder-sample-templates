@@ -68,10 +68,10 @@ spec:
           ui:options:
             allowedKinds:
               - Group
-        projectID:
+        projectId:
           title: Project Identifier
           type: string
-        orgID:
+        orgId:
           title: Org Identifier
           type: string
         secretValue:
@@ -83,8 +83,8 @@ spec:
       name: Create Harness Secret
       action: harness:create-secret
       input:
-        projectID: ${{ parameters.projectID }}       
-        orgID: ${{ parameters.orgID }}       
+        projectId: ${{ parameters.projectId }}       
+        orgId: ${{ parameters.orgId }}       
         secretValue: ${{ parameters.secretValue }}       
         apikey: ${{ parameters.token }}
     - id: trigger
@@ -105,8 +105,8 @@ spec:
       name: Deletes a Harness Secret
       action: harness:delete-secret
       input:
-        projectID: ${{ parameters.projectID }}       
-        orgID: ${{ parameters.orgID }} 
+        projectId: ${{ parameters.projectId }}       
+        orgId: ${{ parameters.orgId }} 
         secretId: ${{ steps.createsecret.output.secretId }}
         apikey: ${{ parameters.token }}
   output:
