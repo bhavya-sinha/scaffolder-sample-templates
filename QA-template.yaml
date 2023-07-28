@@ -1,8 +1,8 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: templateexample
-  title: Sample Template Action
+  name: QAtemplate
+  title: QA Template Action
   description: An template for the scaffolder that creates a Django service
   tags:
     - django
@@ -86,14 +86,6 @@ spec:
         projectId: ${{ parameters.projectId }}       
         orgId: ${{ parameters.orgId }}       
         secretValue: ${{ parameters.secretValue }}       
-        apikey: ${{ parameters.token }}
-    - id: deletesecret
-      name: Deletes a Harness Secret
-      action: harness:delete-secret
-      input:
-        projectId: ${{ parameters.projectId }}       
-        orgId: ${{ parameters.orgId }} 
-        secretId: ${{ steps.createsecret.output.secretId }}
         apikey: ${{ parameters.token }}
   output:
     links:
