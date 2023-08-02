@@ -75,6 +75,7 @@ spec:
         orgId:
           title: Org Identifier
           type: string
+          ui:field: HarnessOrgPicker
         secretValue:
           title: Secret Value
           type: string
