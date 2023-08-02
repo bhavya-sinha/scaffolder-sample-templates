@@ -70,6 +70,7 @@ spec:
               - Group
         projectId:
           title: Project Identifier
+          description: Harness Project Identifier
           type: string
           ui:field: HarnessProjectPicker
         orgId:
