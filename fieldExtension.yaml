@@ -40,6 +40,8 @@ spec:
         - cache
         - lint
         - owner
+        - projectId
+        - orgId
       properties:
         provider:
           title: Choose a cloud provider for Deployment
