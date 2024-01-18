@@ -1,7 +1,7 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: newapplication
+  name: newapplication2
   title: Create a new application
   description: A template to create a new react app
   tags:
