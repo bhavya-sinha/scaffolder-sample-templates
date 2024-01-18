@@ -50,6 +50,7 @@ spec:
           type: string
           ui:widget: password
           ui:field: HarnessAuthToken
+          default: ''
   steps:
     - id: trigger
       name: Creating your react app
