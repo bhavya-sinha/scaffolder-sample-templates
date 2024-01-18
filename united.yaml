@@ -9,15 +9,6 @@ metadata:
     - react
     - javascript
     - secret
-  uid: fd32fde8-a6ed-43a0-8ad5-e424579681a8
-  etag: 844e3806ab486eed758780e2e40c51b48f0d07be
-relations:
-  - type: ownedBy
-    targetRef: group:default/name@company.io
-    target:
-      kind: group
-      namespace: default
-      name: name@company.io
 spec:
   owner: name@company.io
   type: service
