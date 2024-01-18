@@ -1,0 +1,84 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  namespace: default
+  annotations:
+    # backstage.io/managed-by-location: url:https://github.com/United-Airlines-Org/AODevSecOps.CYA-IDP/tree/main/pilot-idp-template.yaml
+    # backstage.io/managed-by-origin-location: url:https://github.com/United-Airlines-Org/AODevSecOps.CYA-IDP/blob/main/pilot-idp-template.yaml
+    # backstage.io/view-url: https://github.com/United-Airlines-Org/AODevSecOps.CYA-IDP/tree/main/pilot-idp-template.yaml
+    # backstage.io/edit-url: https://github.com/United-Airlines-Org/AODevSecOps.CYA-IDP/edit/main/pilot-idp-template.yaml
+    # backstage.io/source-location: url:https://github.com/United-Airlines-Org/AODevSecOps.CYA-IDP/tree/main/
+  name: new-application
+  title: Create a new application
+  description: A template to create a new react app
+  tags:
+    - nextjs
+    - react
+    - javascript
+    - secret
+  uid: fd32fde8-a6ed-43a0-8ad5-e424579681a8
+  etag: 844e3806ab486eed758780e2e40c51b48f0d07be
+relations:
+  - type: ownedBy
+    targetRef: group:default/name@company.io
+    target:
+      kind: group
+      namespace: default
+      name: name@company.io
+spec:
+  owner: name@company.io
+  type: service
+  parameters:
+    - title: Let us know what you want to create
+      required:
+        - techStack
+      properties:
+        techStack:
+          title: Choose a Tech Stack
+          type: string
+          enum:
+            - Java
+            - .Net
+          default: Java
+        version:
+          title: Choose the version
+          type: string
+          enum:
+            - java8
+            - java14
+          default: java8
+        buildSystem:
+          title: Choose the build system
+          type: string
+          enum:
+            - maven
+            - gradle
+          default: maven
+        buildVersion:
+          title: Choose the build version
+          type: string
+          enum:
+            - maven3.1
+            - maven3.2
+          default: maven3.1
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
+  steps:
+    - id: trigger
+      name: Creating your react app
+      action: trigger:harness-custom-pipeline
+      input:
+        url: https://stress.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/home/orgs/AODevSecOps/projects/SandBox/pipelines/idp/pipeline-studio/?storeType=INLINE
+        inputset:
+          techStack: ${{ parameters.techStack }}
+          version: ${{ parameters.version }}
+          buildSystem: ${{ parameters.buildSystem }}
+          buildVersion: ${{ parameters.buildVersion }}
+        apikey: ${{ parameters.token }}
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
