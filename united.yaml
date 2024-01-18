@@ -23,7 +23,6 @@ spec:
           enum:
             - Java
             - .Net
-          default: Java
         version:
           title: Choose the version
           type: string
