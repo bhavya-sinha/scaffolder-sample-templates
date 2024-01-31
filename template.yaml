@@ -71,6 +71,7 @@ spec:
         projectId:
           title: Project Identifier
           type: string
+          ui:field: HarnessProjectPicker
         orgId:
           title: Org Identifier
           type: string
