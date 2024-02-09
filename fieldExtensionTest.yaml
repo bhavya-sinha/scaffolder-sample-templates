@@ -1,8 +1,8 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: fieldExtensionTest
-  title: No Field Extension Template Action
+  name: projectpicker
+  title: Test Auto org picker
   description: An template for the scaffolder that creates a Django service
   tags:
     - django
@@ -68,12 +68,14 @@ spec:
           ui:options:
             allowedKinds:
               - Group
-        projectId:
+        appCI:
           title: Project Identifier
           type: string
-        orgId:
+          ui:field: HarnessProjectPicker
+        someOrgKey:
           title: Org Identifier
           type: string
+          ui:field: HarnessAutoOrgPicker
         secretValue:
           title: Secret Value
           type: string
@@ -86,6 +88,20 @@ spec:
         projectId: ${{ parameters.projectId }}       
         orgId: ${{ parameters.orgId }}       
         secretValue: ${{ parameters.secretValue }}       
+        apikey: ${{ parameters.token }}
+    - id: trigger
+      name: Creating Your Django Service
+      action: trigger:harness-custom-pipeline
+      input:
+        url: 'https://stress.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/home/orgs/default/projects/IDPTest/pipelines/Django_Service_Bhavya/pipeline-studio/?storeType=INLINE'
+        inputset:
+          provider: ${{ parameters.provider }}
+          db: ${{ parameters.db }}
+          cache: ${{ parameters.cache }}
+          lint: ${{ parameters.lint }}
+          name: ${{ parameters.name }}
+          repository: ${{ parameters.repository }}
+          secret: ${{ steps.createsecret.output.secretId }}
         apikey: ${{ parameters.token }}
     - id: deletesecret
       name: Deletes a Harness Secret
