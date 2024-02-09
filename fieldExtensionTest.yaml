@@ -77,7 +77,8 @@ spec:
           type: string
           ui:field: HarnessAutoOrgPicker
           dependencies:
-            projectPickerRef: 'appCI'
+            projectPickerRef:
+              - 'appCI'
         secretValue:
           title: Secret Value
           type: string
