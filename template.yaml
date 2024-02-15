@@ -81,14 +81,6 @@ spec:
           type: string
           ui:widget: password
   steps:
-    - id: createsecret
-      name: Create Harness Secret
-      action: harness:create-secret
-      input:
-        projectId: ${{ parameters.projectId }}       
-        orgId: ${{ parameters.orgId }}       
-        secretValue: ${{ parameters.secretValue }}       
-        apikey: ${{ parameters.token }}
     - id: trigger
       name: Creating Your Django Service
       action: trigger:harness-custom-pipeline
@@ -104,14 +96,6 @@ spec:
           secret: ${{ steps.createsecret.output.secretId }}
         apikey: ${{ parameters.token }}
         hidePipelineLogs: true
-    - id: deletesecret
-      name: Deletes a Harness Secret
-      action: harness:delete-secret
-      input:
-        projectId: ${{ parameters.projectId }}       
-        orgId: ${{ parameters.orgId }} 
-        secretId: ${{ steps.createsecret.output.secretId }}
-        apikey: ${{ parameters.token }}
   output:
     links:
       - title: Pipeline Details
