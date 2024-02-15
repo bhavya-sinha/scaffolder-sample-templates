@@ -103,6 +103,7 @@ spec:
           repository: ${{ parameters.repository }}
           secret: ${{ steps.createsecret.output.secretId }}
         apikey: ${{ parameters.token }}
+        hidePipelineLogs: true
     - id: deletesecret
       name: Deletes a Harness Secret
       action: harness:delete-secret
