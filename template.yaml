@@ -95,7 +95,7 @@ spec:
           repository: ${{ parameters.repository }}
           secret: ${{ steps.createsecret.output.secretId }}
         apikey: ${{ parameters.token }}
-        hidePipelineLogs: true
+        hidePipelineURLLog: true
   output:
     links:
       - title: Pipeline Details
