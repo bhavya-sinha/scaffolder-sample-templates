@@ -89,12 +89,6 @@ spec:
         url: 'https://stress.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/home/orgs/default/projects/projctidp/pipelines/citestpipeline/pipeline-studio?storeType=INLINE
         inputset:
           provider: ${{ parameters.provider }}
-          db: ${{ parameters.db }}
-          cache: ${{ parameters.cache }}
-          lint: ${{ parameters.lint }}
-          name: ${{ parameters.name }}
-          repository: ${{ parameters.repository }}
-          secret: ${{ steps.createsecret.output.secretId }}
         apikey: ${{ parameters.token }}
         # hidePipelineURLLog: true
   output:
