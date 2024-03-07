@@ -97,5 +97,7 @@ spec:
         url: ${{ steps.trigger.output.test2 }}
     text:
       - title: Output Variable
-        content: ${{ steps.trigger.output.test2 }}
+        content: |
+          Output Var is `${{ steps['publish'].output.remoteUrl }}`
+        # content: ${{ steps.trigger.output.test2 }}
         
