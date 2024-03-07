@@ -98,6 +98,5 @@ spec:
     text:
       - title: Output Variable
         content: |
-          Output Var is `${{ steps.trigger.output.test2 }}`
-        # content: ${{ steps.trigger.output.test2 }}
+          Output Var is `${{ steps.trigger.output.test2 }}` 
         
