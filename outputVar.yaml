@@ -93,7 +93,7 @@ spec:
     text:
       - title: Output Variable
         content: |
-          Output Var for test2 is `${{ steps.trigger.output.test2 }}` and test1 is `${{ steps.trigger.output.test2 }}` and object form is `${{ steps.trigger.output.pipeline.stages.testci.spec.execution.steps.Run_1.test1 }}`
+          Output Var for test2 is `${{ steps.trigger.output.test2 }}` and test1 is `${{ steps.trigger.output.test1 }}` and object form is `${{ steps.trigger.output.pipeline.stages.testci.spec.execution.steps.Run_1.test1 }}`
     links:
       - title: Pipeline Details
         url: ${{ steps.trigger.output.PipelineUrl }}
