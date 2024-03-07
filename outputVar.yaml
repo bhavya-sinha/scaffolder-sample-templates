@@ -97,5 +97,5 @@ spec:
         url: ${{ steps.trigger.output.test2 }}
     text:
       - title: Output Variable
-        content: ${{ steps.trigger.output.pipeline.stages.testci.spec.execution.steps.Run_1.test2 }}
+        content: ${{ steps.trigger.output.test2 }}
         
