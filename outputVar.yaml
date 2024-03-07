@@ -21,13 +21,6 @@ spec:
           title: Name of your Django Service
           type: string
           description: Unique name of the service
-        repository:
-          title: Name of the Repository
-          type: string
-          description: This will be the name of Repository on Github
-        isPublish:
-          title: Do you wish to publish the internal registry?
-          type: boolean
         token:
           title: Harness Token
           type: string
@@ -36,31 +29,12 @@ spec:
     - title: Service Infrastructure Details
       required:
         - provider
-        - db
-        - cache
-        - lint
-        - owner
       properties:
         provider:
           title: Choose a cloud provider for Deployment
           type: string
           enum: ['GCP', 'AWS']
           default: GCP
-        db:
-          title: Choose a Database Type for the Service
-          type: string
-          enum: ['None', 'MySQL', 'Postgres', 'MongoDB']
-          default: None
-        cache:
-          title: Choose a caching system for the Service
-          type: string
-          enum: ['None', 'Redis']
-          default: None
-        lint:
-          title: Choose a Python linter for the Service
-          type: string
-          enum: ['None', 'Black', 'Flake8']
-          default: None
         owner:
           title: Choose an Owner for the Service
           type: string
@@ -76,10 +50,6 @@ spec:
           title: Org Identifier
           type: string
           ui:field: HarnessAutoOrgPicker
-        secretValue:
-          title: Secret Value
-          type: string
-          ui:widget: password
   steps:
     - id: trigger
       name: Creating Your Django Service
