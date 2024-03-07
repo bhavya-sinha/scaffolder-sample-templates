@@ -90,13 +90,13 @@ spec:
           provider: ${{ parameters.provider }}
         apikey: ${{ parameters.token }}
   output:
-    links:
-      - title: Pipeline Details
-        url: ${{ steps.trigger.output.PipelineUrl }}
-      - title: Output Variable
-        url: ${{ steps.trigger.output.test2 }}
     text:
       - title: Output Variable
         content: |
           Output Var is `${{ steps.trigger.output.test2 }}` 
+    # links:
+    #   - title: Pipeline Details
+    #     url: ${{ steps.trigger.output.PipelineUrl }}
+    #   - title: Output Variable
+    #     url: ${{ steps.trigger.output.test2 }}
         
