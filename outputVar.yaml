@@ -14,8 +14,6 @@ spec:
     - title: Django Service Details
       required:
         - name
-        - repository
-        - isPublish
       properties:
         name:
           title: Name of your Django Service
