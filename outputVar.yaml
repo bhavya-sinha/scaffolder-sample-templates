@@ -93,9 +93,11 @@ spec:
     links:
       - title: Pipeline Details
         url: ${{ steps.trigger.output.PipelineUrl }}
-      - title: Open in catalog
-        icon: catalog
-        entityRef: ${{ steps.register.output.entityRef }}
+      # - title: Open in catalog
+      #   icon: catalog
+      #   entityRef: ${{ steps.register.output.entityRef }}
+      - title: Output Variable
+        url: ${{ steps.trigger.output.pipeline.stages.testci.spec.execution.steps.Run_1.test2 }}
     text:
       - title: Output Variable
         content: ${{ steps.trigger.output.pipeline.stages.testci.spec.execution.steps.Run_1.test2 }}
