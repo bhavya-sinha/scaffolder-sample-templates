@@ -98,6 +98,5 @@ spec:
         entityRef: ${{ steps.register.output.entityRef }}
     text:
       - title: Output Variable
-        content: |
-          **Entity URL:** `${{ steps.trigger.output.pipeline.stages.testci.spec.execution.steps.Run_1.test2 }}`
+        content: ${{ steps.trigger.output.pipeline.stages.testci.spec.execution.steps.Run_1.test2 }}
         
