@@ -57,6 +57,7 @@ spec:
         inputset:
           provider: ${{ parameters.provider }}
         apikey: ${{ parameters.token }}
+        showOutputVariables: true
   output:
     text:
       - title: Output Variable
