@@ -69,6 +69,4 @@ spec:
     links:
       - title: Pipeline Details
         url: ${{ steps.trigger.output.PipelineUrl }}
-      - title: Output Variable
-        url: ${{ steps.trigger.output.test2 }}
         
