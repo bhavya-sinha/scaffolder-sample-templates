@@ -48,7 +48,7 @@ spec:
       input:
         url: 'https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/idp-admin/orgs/default/projects/IDPtest/pipelines/Output_Variable_Demo/pipeline-studio?storeType=INLINE'
         inputset:
-          provider: ${{ parameters.provider }}
+          name: ${{ parameters.name }}
         apikey: ${{ parameters.token }}
         showOutputVariables: true
   output:
