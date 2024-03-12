@@ -27,7 +27,7 @@ spec:
       name: Running your Pipeline
       action: trigger:harness-custom-pipeline
       input:
-         url: 'https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/idp-admin/orgs/default/projects/IDPtest/pipelines/Output_Variable_Demo/pipeline-studio?storeType=INLINE'
+         url: 'https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/idp-admin/orgs/default/projects/IDPtest/pipelines/Demo_Pipeline/pipeline-studio?storeType=INLINE'
         inputset:
           slack_id: ${{ parameters.slack_id }}
         apikey: ${{ parameters.token }}
@@ -38,7 +38,7 @@ spec:
               Value of **Output Variable 1** is `${{ steps.trigger.output.outputVar1 }}` 
       - title: Output Variable 2
         content: |
-          Value of **Output Variable 2** is `${{ steps.trigger.output['pipeline.stages.build.spec.execution.steps.Run_1.output.outputVariables.outputVar2'] }}`
+          Value of **Output Variable 2** is `${{ steps.trigger.output['pipeline.stages.stage.spec.execution.steps.ShellScript_1.output.outputVariables.outputVar2'] }}`
     links:
       - title: Pipeline Details
         url: ${{ steps.trigger.output.PipelineUrl }}
