@@ -1,0 +1,65 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: outputVar
+  title: Output Variable Example
+  description: An template for the scaffolder that creates a Django service
+  tags:
+    - django
+    - harness
+spec:
+  owner: bhavya.sinha@harness.io
+  type: service
+  parameters:
+    - title: Django Service Details
+      required:
+        - name
+      properties:
+        name:
+          title: Name of your Service
+          type: string
+          description: Unique name of the service
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
+    - title: Project and Org Details
+      properties:
+        owner:
+          title: Choose an Owner for the Service
+          type: string
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+        projectId:
+          title: Project Identifier
+          type: string
+          ui:field: HarnessProjectPicker
+        orgId:
+          title: Org Identifier
+          type: string
+          ui:field: HarnessAutoOrgPicker
+  steps:
+    - id: trigger
+      name: Creating Your Django Service
+      action: trigger:harness-custom-pipeline
+      input:
+        url: 'https://stress.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/idp-admin/orgs/default/projects/projctidp/pipelines/Demo_Pipeline/pipeline-studio?storeType=INLINE'
+        inputset:
+          name: ${{ parameters.name }}
+        apikey: ${{ parameters.token }}
+        showOutputVariables: true
+  output:
+    text:
+      - title: Output Variable 1
+        content: |
+              Value of **Output Variable 1** is `${{ steps.trigger.output.outputVar1 }}` 
+      - title: Output Variable 2
+        content: |
+          Value of **Output Variable 2** is `${{ steps.trigger.output['pipeline.stages.build.spec.execution.steps.Run_1.output.outputVariables.outputVar2'] }}`
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
+        
