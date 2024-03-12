@@ -28,9 +28,10 @@ spec:
       action: trigger:harness-custom-pipeline
       input:
          url: 'https://qa.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/idp-admin/orgs/default/projects/IDPtest/pipelines/Demo_Pipeline/pipeline-studio?storeType=INLINE'
-        inputset:
+         inputset:
           slack_id: ${{ parameters.slack_id }}
-        apikey: ${{ parameters.token }}
+         apikey: ${{ parameters.token }}
+         showOutputVariables: true
   output:
     text:
       - title: Output Variable 1
