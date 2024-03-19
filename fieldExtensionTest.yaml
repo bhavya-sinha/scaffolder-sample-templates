@@ -111,8 +111,8 @@ spec:
       name: Deletes a Harness Secret
       action: harness:delete-secret
       input:
-        projectId: ${{ parameters.projectId }}       
-        orgId: ${{ parameters.orgId }} 
+        projectId: ${{ parameters.appCI }}       
+        orgId: ${{ parameters.someOrgKey }}  
         secretId: ${{ steps.createsecret.output.secretId }}
         apikey: ${{ parameters.token }}
   output:
