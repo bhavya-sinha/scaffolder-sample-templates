@@ -89,8 +89,8 @@ spec:
       name: Create Harness Secret
       action: harness:create-secret
       input:
-        projectId: ${{ parameters.projectId }}       
-        orgId: ${{ parameters.orgId }}       
+        projectId: ${{ parameters.appCI }}       
+        orgId: ${{ parameters.someOrgKey }}       
         secretValue: ${{ parameters.secretValue }}       
         apikey: ${{ parameters.token }}
     - id: trigger
