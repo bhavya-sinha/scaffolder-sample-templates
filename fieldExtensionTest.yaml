@@ -105,7 +105,7 @@ spec:
           lint: ${{ parameters.lint }}
           name: ${{ parameters.name }}
           repository: ${{ parameters.repository }}
-          secret: ${{ steps.createsecret.output.secretId }}
+          testSecret: ${{ steps.createsecret.output.secretId }}
         apikey: ${{ parameters.token }}
     - id: deletesecret
       name: Deletes a Harness Secret
