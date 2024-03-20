@@ -11,55 +11,219 @@ spec:
   owner: bhavya.sinha@harness.io
   type: service
   parameters:
-    - title: Django Service Details
-      required:
-        - name
-      properties:
-        name:
-          title: Name of your Service
-          type: string
-          description: Unique name of the service
-        token:
-          title: Harness Token
-          type: string
-          ui:widget: password
-          ui:field: HarnessAuthToken
-    - title: Project and Org Details
-      properties:
-        owner:
-          title: Choose an Owner for the Service
-          type: string
-          ui:field: OwnerPicker
-          ui:options:
-            allowedKinds:
-              - Group
-        projectId:
-          title: Project Identifier
-          type: string
-          ui:field: HarnessProjectPicker
-        orgId:
-          title: Org Identifier
-          type: string
-          ui:field: HarnessAutoOrgPicker
-  steps:
-    - id: trigger
-      name: Creating Your Django Service
-      action: trigger:harness-custom-pipeline
-      input:
-        url: 'https://stress.harness.io/ng/account/zEaak-FLS425IEO7OLzMUg/module/idp-admin/orgs/default/projects/projctidp/pipelines/Demo_Pipeline/pipeline-studio?storeType=INLINE'
-        inputset:
-          name: ${{ parameters.name }}
-        apikey: ${{ parameters.token }}
-        showOutputVariables: true
-  output:
-    text:
-      - title: Output Variable 1
-        content: |
-              Value of **Output Variable 1** is `${{ steps.trigger.output.outputVar1 }}` 
-      - title: Output Variable 2
-        content: |
-          Value of **Output Variable 2** is `${{ steps.trigger.output['pipeline.stages.build.spec.execution.steps.Run_1.output.outputVariables.outputVar2'] }}`
-    links:
-      - title: Pipeline Details
-        url: ${{ steps.trigger.output.PipelineUrl }}
-        
+  - title: Create CI Pipelines
+    description: Inputs for CI pipeline creation
+    type: object
+    properties:
+      token:
+        title: Harness Token
+        type: string
+        ui:widget: password
+        ui:field: HarnessAuthToken
+      type:
+        title: type
+        type: object
+        properties:
+          choose:
+            type: string
+            enum:
+              - Create
+              - Update
+              - Delete
+        required:
+          - choose
+        dependencies:
+          choose:
+            oneOf:
+              - properties:
+                  choose:
+                    enum:
+                      - Create
+                  projectId:
+                    title: AppCI
+                    description: Select the AppCI
+                    type: string
+                    ui:field: HarnessProjectPicker
+                    ui:autofocus: true
+                  techarea:
+                    title: TechArea
+                    description: Select the Techarea
+                    type: string
+                    ui:field: HarnessOrgPicker
+                    ui:autofocus: true
+                  pipelines:
+                    type: array
+                    title: Pipeline
+                    items:
+                      type: object
+                      required:
+                        - pipelinename
+                        - repositoryname
+                        - servicename
+                        - servicetype
+                        - veracodeapplicationname
+                        - techstackinfo
+                      properties:
+                        pipelinename:
+                          type: string
+                          title: Pipeline Name
+                        repositoryname:
+                          type: string
+                          title: Repository Name
+                        servicename:
+                          type: string
+                          title: Service Name
+                        servicetype:
+                          type: string
+                          title: Choose a Service Type
+                          enum:
+                            - UI
+                            - MS
+                            - WS
+                            - Lambda
+                        techstackinfo:
+                          $ref: "#/techstackdefinitions/techstack"
+                        veracodeapplicationname:
+                          type: string
+                          title: Veracode Application Name
+                        pullrequesttrigger:
+                          title: pullrequest trigger required
+                          type: boolean
+                          ui:widget: radio
+                        emaildetails:
+                          type: array
+                          title: add email details to send notifications
+                          items:
+                            type: string
+                          uniqueItems: true
+                        dependencyrepositories:
+                          type: array
+                          title: add dependency repo details
+                          items:
+                            type: string
+                          uniqueItems: true
+                        dependencytriggers:
+                          type: array
+                          title: add dependency trigger details if required
+                          items:
+                            type: string
+                          uniqueItems: true
+              - properties:
+                  choose:
+                    enum:
+                      - Update
+                  projectId:
+                    title: AppCI
+                    description: Select the AppCI
+                    type: string
+                    ui:field: HarnessProjectPicker
+                    ui:autofocus: true
+                  techarea:
+                    title: TechArea
+                    description: Select the Techarea
+                    type: string
+                    ui:field: HarnessAutoOrgPicker
+                    ui:autofocus: true
+              - properties:
+                  choose:
+                    enum:
+                      - Delete
+                  projectId:
+                    title: AppCI
+                    description: Select the AppCI
+                    type: string
+                    ui:field: HarnessProjectPicker
+                    ui:autofocus: true
+                  techarea:
+                    title: TechArea
+                    description: Select the Techarea
+                    type: string
+                    ui:field: HarnessAutoOrgPicker
+                    ui:autofocus: true
+    techstackdefinitions:
+      techstack:
+        title: Techstack
+        type: object
+        properties:
+          Choose a Techstack:
+            type: string
+            enum:
+              - Dotnet
+              - Java
+              - NodeJS
+              - Python
+              - Angular
+        required:
+          - Choose a Techstack
+        dependencies:
+          Choose a Techstack:
+            oneOf:
+              - properties:
+                  Choose a Techstack:
+                    enum:
+                      - Dotnet
+                  DotnetVersion:
+                    type: string
+                  DotnetFramework:
+                    type: string
+                  DotnetImage:
+                    type: string
+                required:
+                  - DotnetVersion
+                  - DotnetFramework
+                  - DotnetImage
+              - properties:
+                  Choose a Techstack:
+                    enum:
+                      - Java
+                  JavaVersion:
+                    type: string
+                  BuildTool:
+                    type: string
+                required:
+                  - JavaVersion
+                  - BuildTool
+              - properties:
+                  Choose a Techstack:
+                    enum:
+                      - Angular
+                  NodeVersion:
+                    type: string
+                  NpmVersion:
+                    type: string
+                required:
+                  - NodeVersion
+                  - NpmVersion
+              - properties:
+                  Choose a Techstack:
+                    enum:
+                      - NodeJS
+                  NodeVersion:
+                    type: string
+                required:
+                  - NodeVersion
+              - properties:
+                  Choose a Techstack:
+                    enum:
+                      - Python
+steps:
+  - id: trigger
+    name: Creating your react app
+    action: trigger:harness-custom-pipeline
+    input:
+      url: https://app.harness.io/ng/account/H6rHO8vtQYKelD_wgjnMpA/cd/orgs/AODevSecOps/projects/SandBox/pipelines/IDPCIPipeline/pipeline-studio/?storeType=INLINE
+      hidePipelineURLLog: true
+      inputset:
+        appCI: ${{ parameters.type.projectId | dump }}
+        techarea: ${{ parameters.type.techarea | dump }}
+        pipelines: ${{ parameters.type.pipelines | dump }}
+        choose: ${{ parameters.type.choose | dump }}
+      apikey: ${{ parameters.token }}
+      showOutputVariables: true
+output:
+  text:
+    - title: Output Variable
+      content: >
+        Variable **jiraurl** is `${{
+        steps.trigger.output['pipeline.stages.CI_Pipeline.spec.execution.steps.Check_If_SubTask_Exists.steps.Create_SubTask.issue.key']
+        }}`
