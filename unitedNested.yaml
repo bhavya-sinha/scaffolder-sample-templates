@@ -1,8 +1,8 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: outputVar
-  title: Output Variable Example
+  name: nested template
+  title: Nested Template Example
   description: An template for the scaffolder that creates a Django service
   tags:
     - django
