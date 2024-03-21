@@ -1,25 +1,12 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  namespace: default
-  annotations:
-    backstage.io/managed-by-location: url:https://github.com/United-Airlines-Org/AODevSecOps.CYA-IDP/tree/main/idp-ci-template.yaml
-    backstage.io/managed-by-origin-location: url:https://github.com/United-Airlines-Org/AODevSecOps.CYA-IDP/blob/main/idp-ci-template.yaml
-    backstage.io/view-url: https://github.com/United-Airlines-Org/AODevSecOps.CYA-IDP/tree/main/idp-ci-template.yaml
-    backstage.io/edit-url: https://github.com/United-Airlines-Org/AODevSecOps.CYA-IDP/edit/main/idp-ci-template.yaml
-    backstage.io/source-location: url:https://github.com/United-Airlines-Org/AODevSecOps.CYA-IDP/tree/main/
-  name: CI-Pipeline-Provisioner
-  title: CI Pipeline Provisioner
-  description: Automated work flow that provides self service capabilities to
-    build CI Pipelines based on user's technology stack and building
-    requirements with security controls attached
+  name: outputVar
+  title: Output Variable Example
+  description: An template for the scaffolder that creates a Django service
   tags:
-    - idp
-    - dsof
-    - platformengineering
-    - plat
-  uid: b01e766d-4092-405b-93c0-fe99758bc0fc
-  etag: a1cfd53465ca02f381f42b8d37e5c89ba4d35513
+    - django
+    - harness
 relations:
   - type: ownedBy
     targetRef: group:default/ratna.devarapalli@united.com, maheesa.maheen@united.com
