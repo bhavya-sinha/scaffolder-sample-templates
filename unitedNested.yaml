@@ -50,11 +50,8 @@ spec:
                       title: TechArea
                       description: Select the Techarea
                       type: string
-                      ui:field: HarnessAutoOrgPicker
+                      ui:field: HarnessOrgPicker
                       ui:autofocus: true
-                      dependencies:
-                        projectPickerRef:
-                          - 'projectId'
                     pipelines:
                       type: array
                       title: Pipeline
@@ -126,11 +123,8 @@ spec:
                       title: TechArea
                       description: Select the Techarea
                       type: string
-                      ui:field: HarnessAutoOrgPicker
+                      ui:field: HarnessOrgPicker
                       ui:autofocus: true
-                      dependencies:
-                        projectPickerRef:
-                          - 'projectId'
                 - properties:
                     choose:
                       enum:
@@ -145,11 +139,8 @@ spec:
                       title: TechArea
                       description: Select the Techarea
                       type: string
-                      ui:field: HarnessAutoOrgPicker
+                      ui:field: HarnessOrgPicker
                       ui:autofocus: true
-                      dependencies:
-                        projectPickerRef:
-                          - 'projectId'
       techstackdefinitions:
         techstack:
           title: Techstack
