@@ -7,16 +7,9 @@ metadata:
   tags:
     - django
     - harness
-relations:
-  - type: ownedBy
-    targetRef: group:default/ratna.devarapalli@united.com, maheesa.maheen@united.com
-    target:
-      kind: group
-      namespace: default
-      name: ratna.devarapalli@united.com, maheesa.maheen@united.com
 spec:
   title: CI Pipeline Provisioner
-  owner: ratna.devarapalli@united.com, maheesa.maheen@united.com
+  owner: bhavya.sinha@harness.io
   type: service
   parameters:
     - title: Create CI Pipelines
