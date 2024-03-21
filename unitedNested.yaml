@@ -219,11 +219,3 @@ steps:
         pipelines: ${{ parameters.type.pipelines | dump }}
         choose: ${{ parameters.type.choose | dump }}
       apikey: ${{ parameters.token }}
-      showOutputVariables: true
-output:
-  text:
-    - title: Output Variable
-      content: >
-        Variable **jiraurl** is `${{
-        steps.trigger.output['pipeline.stages.CI_Pipeline.spec.execution.steps.Check_If_SubTask_Exists.steps.Create_SubTask.issue.key']
-        }}`
