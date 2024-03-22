@@ -123,7 +123,7 @@ spec:
                       title: TechArea
                       description: Select the Techarea
                       type: string
-                      ui:field: HarnessAutoOrgPicker
+                      ui:field: HarnessOrgPicker
                       ui:autofocus: true
                 - properties:
                     choose:
@@ -139,7 +139,7 @@ spec:
                       title: TechArea
                       description: Select the Techarea
                       type: string
-                      ui:field: HarnessOrgPicker
+                      ui:field: HarnessAutoOrgPicker
                       ui:autofocus: true
       techstackdefinitions:
         techstack:
